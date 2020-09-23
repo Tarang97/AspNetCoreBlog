@@ -1,0 +1,86 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = Model.Title + " - DevonOps";
+    ViewData["Description"] = Model.Description;
+    ViewData["Keywords"] = $"{Model.Tags?.Replace(",", "")} {Model.Category}";
+}
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8 mt-5">
+
+            <!-- Title -->
+            <h1 class="mt-4">@Model.Title</h1>
+
+            <!-- Author -->
+            <p class="lead">
+                by
+                <a href="#">Tarang Dube</a>
+            </p>
+
+            <hr>
+
+            <!-- Date/Time -->
+            <p>Posted on @Model.Created.ToString("D")</p>
+
+            <hr>
+            @if (!String.IsNullOrEmpty(Model.Image))
+            {
+                var imagePath = $"/Image/{Model.Image}";
+                <!-- Preview Image -->
+                <img class="img-fluid rounded" src="@imagePath" alt="@Model.Image">
+            }
+
+            <hr>
+
+            <!-- Post Content -->
+            <p>@Html.Raw(Model.Body)</p>
+
+            <hr>
+
+            <!-- Comments Form -->
+            <div class="card my-4">
+                <h5 class="card-header">Leave a Comment:</h5>
+                <div class="card-body">
+                    @{
+                        await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PostId = Model.Id, MainCommentId = 0 });
+                    }
+                </div>
+            </div>
+
+            <!-- Comment with nested comments -->
+            @foreach (var c in Model.MainComments)
+            {
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="~/content/static/user-icon.png" height="50" width="50" alt="Commented User">
+                    <div class="media-body">
+                        @c.Message <br />
+                        <h6>@c.Created.ToString("f")</h6>
+
+                        <div class="media mt-4">
+                            <img class="d-flex mr-3 rounded-circle" src="~/content/static/user-icon.png" height="50" width="50" alt="Commented User">
+                            @foreach (var sc in c.SubComments)
+                            {
+                                <div class="media-body">
+                                    @sc.Message <br />
+                                    <h6>@sc.Created.ToString("f")</h6>
+                                    @{
+                                        await Html.RenderPartialAsync("_MainComment", new CommentViewModel { PostId = Model.Id, MainCommentId = c.Id });
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        @*<partial name="_Sidebar" model="Model" />*@
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->

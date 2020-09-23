@@ -1,0 +1,123 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "About - DevonOps";
+    ViewBag.Description = "DevonOps Blog. A place for help and knowledge seekers related to new trending IT information and troubleshooting tutorials related to programming.";
+    ViewBag.Keywords = "blog blogs programming cloud computing tutorial tutorials";
+}
+<h2>@ViewData["Title"]</h2>
+
+<div class="aboutus-area mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="aboutus-content ">
+                    <h3 style="border-bottom: .05rem solid #e5e5e5;">
+                        <span>About</span>
+                    </h3>
+
+                    <p class="mb-5" style="text-align: justify;">
+                        DevonOps means Developer-on-Operations. The naming convention is like DevOps which is a collaboration of
+                        Developers and System Operations Engineer. For DevonOps, since DevOps started in 2014, that means since then
+                        Developer has started to go on to System Operations work along with the development which started the new age of not just
+                        Developing the application; but, also Releasing it, Configuring it and Monitoring it too. <br/><br/>
+
+                        Hello! My Name is Tarang Dube. I'm a Graduate Student studying Master of Engineering in Internetworking
+                        in Dalhousie University, Canada. This is my first personal blog which I developed with the intention to
+                        provide help related to new trending IT information and troubleshooting tutorials related to programming.
+                        This blog will contain those efforts which I have experienced till now in my life when I started working in
+                        programming and developing some existing ideas to build my own knowledge towards it. I'll share my experience
+                        of how I've worked and/or I'll work on those things and during my work, what errors I've faced or I'll face and how did I troubleshoot
+                        them and learn them to overcome those errors in future for best practices. For new IT information, we all are Tech
+                        enthusiast to know the new ideas, to learn them, to implement them, and finally share them. This informations
+                        will be authentic If I've experienced it and/or I'll experience it and will be posted on my blog with the
+                        reference to the original source link or As I said with my own experience of it. I hope you like my blog and Contact me
+                        to post some new ideas or tutorials as per your requests.
+                    </p>
+
+                    <h3 style="border-bottom: .05rem solid #e5e5e5;">
+                        <span>Connect with me on LinkedIn</span>
+                    </h3>
+                    <ul class="list-unstyled mb-5">
+                        <li>
+                            <a href="https://linkedin.com/in/tarang-dube-387a25147" style="font-size:large;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        </li>
+                    </ul>
+
+                    <h3 style="border-bottom: .05rem solid #e5e5e5;">
+                        <span>Educational Background</span>
+                    </h3>
+                    <ul class="list-unstyled mb-5">
+                        <li>July 2014 - June 2018<br /></li>
+                        <li>
+                            <b>1) L. J. Institute of Engineering and Technology, India</b> -
+                            Bachelor of Engineering in Computer Engineering
+                        </li>
+                        <br />
+                        <li>April 2019 - December 2020<br /></li>
+                        <li>
+                            <b>2) Dalhousie University, Canada</b> -
+                            Master of Engineering in Internetworking
+                        </li>
+                    </ul>
+
+                    <h3 style="border-bottom: .05rem solid #e5e5e5;">
+                        <span>Qualifications</span>
+                    </h3>
+                    <ul class="list-unstyled mb-5">
+                        <li class="mb-3">
+                            <b>1) Microsoft Certified - Azure Fundamentals (2019)</b><br />
+                            <img src="~/images/azure-fundamentals.png" height="100" width="100" />
+                        </li>
+                        <li>
+                            <b>2) Microsoft Certified - Azure Developer Assoicate (2020)</b><br />
+                            <img src="~/images/azure-developer-associate.png" height="100" width="100" />
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="border-left: .05rem solid #e5e5e5;">
+                <h3 class="mb-3" style="border-bottom: .05rem solid #e5e5e5;">Contact Me</h3>
+                <form class="needs-validation" asp-controller="Home" asp-action="About" method="post">
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="FullName">Full Name <sup style="color:red;">*</sup></label>
+                            <input asp-for="FullName" class="form-control" placeholder="Enter your Full Name">
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="Email">Email ID <sup style="color:red;">*</sup></label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter your Email">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="Subject">Subject <sup style="color:red;">*</sup></label>
+                            <input asp-for="Subject" class="form-control" placeholder="Enter your Subject">
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label asp-for="Comment">Comments <sup style="color:red;">*</sup></label>
+                            <textarea class="form-control" rows="3" asp-for="Comment" placeholder="Leave a Comment..."></textarea>
+                            <span asp-validation-for="Comment" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                    <span class="text-danger">Please Correct the following errors!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

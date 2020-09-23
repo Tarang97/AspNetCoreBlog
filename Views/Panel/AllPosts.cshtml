@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Post>
+@{ 
+    ViewData["Title"] = "All Posts";
+}
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <h2 style="border-bottom: .05rem solid #e5e5e5;width:100%" class="mb-2">All Posts</h2>
+        <div class="table-responsive">
+            <a asp-controller="Panel" asp-action="Edit" class="btn btn-primary mb-3 mt-3">Add Post</a>
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Post Title</th>
+                        <th>Post Category</th>
+                        <th>Created At</th>
+                        <th>Edit</th>
+                        <th>Delete </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var post in Model)
+                    {
+                        <tr>
+                            <td>@post.Id</td>
+                            <td>@post.Title</td>
+                            <td>@post.Category</td>
+                            <td>@post.Created</td>
+                            <td><a asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id"><i class="fas fa-edit"></i></a></td>
+                            <td><a asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id"><i class="far fa-trash-alt"></i></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

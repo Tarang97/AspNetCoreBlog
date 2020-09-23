@@ -1,0 +1,33 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "DevonOps";
+    ViewBag.Description = "DevonOps Blog. A place for help and knowledge seekers related to new trending IT information and troubleshooting tutorials related to programming.";
+    ViewBag.Keywords = "blog blogs programming cloud computing tutorial tutorials";
+}
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="pb-4 mb-4 my-4 border-bottom">
+                <small>Latest Posts</small>
+            </h1>
+            <!-- Blog Post -->
+            @foreach (var post in Model.Posts)
+            {
+                var imagePath = $"/Image/{post.Image}";
+                <div class="card mb-4">
+                    <img class="card-img-top" src="@imagePath" alt="@post.Image">
+                    <div class="card-body">
+                        <h2 class="card-title">@post.Title</h2>
+                        <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id" class="btn btn-primary">Read More &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on @post.Created.ToString("D")
+                    </div>
+                </div>
+            }
+            <partial name="_Pagination" model="Model" />
+        </div>
+        <partial name="_Sidebar" model="Model" />
+    </div>
+</div>

@@ -1,0 +1,56 @@
+﻿@model PostViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+<link href="~/lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+<div class="row mb-4">
+    <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Edit</h4>
+        <input asp-for="Id" type="hidden" />
+        <form class="needs-validation" asp-controller="Panel" asp-action="Edit" method="post" enctype="multipart/form-data" novalidate>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="title">Title</label>
+                    <input type="text" asp-for="Title" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="title">Description</label>
+                    <input type="text" asp-for="Description" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="title">Tags</label>
+                    <input type="text" asp-for="Tags" class="form-control" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                        <label for="title">Category</label>
+                        <select asp-for="Category" class="form-control" required>
+                            <option val="Cloud Computing">Cloud Computing</option>
+                            <option val="Programming">Programming</option>
+                            <option val="Tutorials">Tutorials</option>
+                        </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="image">Image</label>
+                    <input asp-for="CurrentImage" type="hidden" />
+                    <input asp-for="Image" class="form-control" placeholder="Upload Image" required>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="body">Body</label>
+                    <textarea asp-for="Body" id="editor"></textarea>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript" src="~/lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script type="text/javascript">
+        $('#editor').trumbowyg({
+            defaultLinkTarget: '_blank'
+        });
+    </script>
+}

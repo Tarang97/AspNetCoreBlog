@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Asp.Net Core Blog</title>
+
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="keywords" content="@ViewBag.Keywords" />
+
+    <environment include="Development">
+        <!-- Bootstrap styles for this template -->
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css" />
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="~/css/blog.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment include="Production">
+        <!-- Bootstrap styles for this template -->
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" />
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="~/css/blog.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" />
+    </environment>
+    <style type="text/css">
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+    <!-- Custom font styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3a41159813.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="border-bottom: .05rem solid #e5e5e5;">
+        <div class="container">
+            <a class="navbar-brand blog-header-logo text-dark" asp-controller="Home" asp-action="Index">DevonOps</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="CloudComputing">Cloud Computing</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Programming">Programming</a>
+                            <a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-category="Tutorials">Tutorials</a>
+                        </div>
+                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin Panel
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Panel" asp-action="Index">Dashboard</a>
+                                <a class="dropdown-item" asp-controller="Panel" asp-action="AllPosts">All Posts</a>
+                                <a class="dropdown-item" asp-controller="Panel" asp-action="Edit">Create Posts</a>
+                                <a class="dropdown-item" asp-controller="Panel" asp-action="AllContactRequest">All Contact Requests</a>
+                                <a class="dropdown-item" asp-controller="Auth" asp-action="Logout">Logout</a>
+                            </div>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+
+    <footer class="blog-footer">
+        <p>&copy; 2020 - DevonOps</p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+    <environment include="Development">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment include="Production">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

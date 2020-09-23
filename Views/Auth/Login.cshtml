@@ -1,0 +1,20 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "DevonOps - Login";
+}
+
+<div class="text-center mt-5 mb-5">
+    <form class="form-signin" style="width: 100%; max-width: 330px; padding: 15px; margin: auto;" asp-controller="Auth" asp-action="Login" method="post">
+        <img class="mb-4" src="~/lib/bootstrap/dist/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Username/Email</label>
+        <input id="inputEmail" style="margin-bottom: -1px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;position: relative;box-sizing: border-box;height: auto;padding: 10px;font-size: 16px;" class="form-control" placeholder="Username/Email" asp-for="UserName" required autofocus>
+        <span asp-validation-for="UserName"></span>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input id="inputPassword" style="margin-bottom: 10px;border-bottom-right-radius: 0;border-bottom-left-radius: 0;position: relative;box-sizing: border-box;height: auto;padding: 10px;font-size: 16px;" class="form-control" placeholder="Password" asp-for="Password" required>
+        <span asp-validation-for="Password"></span>
+        <div class="checkbox mb-3"></div>
+        <button class="btn btn-lg btn-primary btn-block mb-3" type="submit">Sign in</button>
+    </form>
+</div>
